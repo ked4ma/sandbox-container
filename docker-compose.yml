@@ -1,0 +1,38 @@
+version: "3"
+services:
+  ubuntu:
+    image: ubuntu:16.04
+  go:
+    build: ./container/go/
+    command: tail -f /dev/null
+  kotlin:
+    build: ./container/kotlin/
+    command: tail -f /dev/null
+  node:
+    build: ./container/node/
+    command: tail -f /dev/null
+  python3:
+    build: ./container/python3/
+    command: tail -f /dev/null
+  mysql56:
+    image: mysql:5.6
+    ports:
+      - "13306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=passwd
+  mysql57:
+    image: mysql:5.7
+    ports:
+      - "23306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=passwd
+  redis40:
+    image: redis:4.0
+    ports:
+      - "26379:6379"
+  jupyter:
+    build: ./container/jupyter/
+    ports:
+      - "8888:8888"
+  ffmpeg:
+    build: ./container/ffmpeg
